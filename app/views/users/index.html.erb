@@ -1,0 +1,31 @@
+<h1>Users List</h1>
+<% @user.each do |u| %>
+<%= u.name %>, <%= u.status %>, <%= u.role_id %>
+    <br>
+<% end %>
+
+<br><br>
+<h1> Register new user </h1>
+<br>
+<%= form_for(@newUser) do |f| %>
+
+    <%#= FORM name %>
+    <%= f.text_field :name, placeholder: 'Write the name'%><br>
+
+    <%# FORM status %>
+
+    <%= f.text_field :status, placeholder: 'Status unavailable', disabled: "disabled"%><br>
+
+
+    <%#= FORM Role_id %>
+
+    <%#= f.text_field :role_id, placeholder: 'Write the role_id'%><br>
+    <%#= f.select(:role_id, options_from_collection_for_select(@role.all, :id, :name))%>
+    <%= f.collection_select(:role_id, @role, :id, :name) %>
+
+
+    <%= f.submit "Create new User" %>
+<% end %>
+<br>
+
+<%= @test %>

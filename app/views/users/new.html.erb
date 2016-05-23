@@ -1,0 +1,17 @@
+<%= form_for(@user) do |f| %>
+
+    <%#= FORM name %>
+    <%= f.text_field :name, placeholder: 'Write the name'%><br>
+
+    <%# FORM status %>
+
+    <%= f.text_field :status, placeholder: 'Write the status'%><br>
+
+
+    <%#= FORM Role_id %>
+
+    <%= f.text_field :role_id, placeholder: 'Write the role_id'%><br>
+
+
+    <%= f.submit "Create new User" %>
+<% end %>

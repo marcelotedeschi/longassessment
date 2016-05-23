@@ -18,3 +18,10 @@ Permission.create(name: "create", role_id: 1)
 Permission.create(name: "edit", role_id: 1)
 Permission.create(name: "edit", role_id: 2)
 
+PermissionUser.create(user_id: 1, permission_id: 1)
+PermissionUser.create(user_id: 1, permission_id: 2)
+PermissionUser.create(user_id: 2, permission_id: 3)
+PermissionUser.create(user_id: 3, permission_id: 3)
+
+
+
