@@ -4,7 +4,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :status
 
-      t.timestamps
+      t.belongs_to :role, index: true
+
+      t.timestamps null: false
     end
   end
 end
