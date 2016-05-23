@@ -9,16 +9,23 @@ class UsersController < ApplicationController
     return @result
   end
 
+  def show
+    @user = User.find(params[:id])
+    @permissions = @user.permissions
+    @result = []
+    @permissions.each do |p|
+      @result << p.name
+    end
+    return @result
+
+  end
+
   def index
     @role = Role.all
     @user = User.all
     @newUser = User.new
 
-    user = User.all
-    @test = userpermissions(user.first)
-
   end
-
 
   def create
     @user = User.new(user_params.merge(status: "Logged"))

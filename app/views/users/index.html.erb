@@ -1,6 +1,7 @@
 <h1>Users List</h1>
 <% @user.each do |u| %>
 <%= u.name %>, <%= u.status %>, <%= u.role_id %>
+    <%= link_to "Show Permissions", user_path(u.id)%>
     <br>
 <% end %>
 
