@@ -12,11 +12,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @permissions = @user.permissions
+    @permissionsThroughRoles = @user.role.permissions
     @result = []
-    @permissions.each do |p|
+    @allPermissions = (@permissions + @permissionsThroughRoles).uniq { |p| p.id }
+
+    @allPermissions.each do |p|
       @result << p.name
     end
-    return @result
 
   end
 

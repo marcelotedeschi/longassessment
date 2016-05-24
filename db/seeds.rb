@@ -15,13 +15,16 @@ User.create(name: "john", status: "logged", role_id: 2)
 
 
 Permission.create(name: "create", role_id: 1)
-Permission.create(name: "edit", role_id: 1)
-Permission.create(name: "edit", role_id: 2)
+Permission.create(name: "read", role_id: 1)
+Permission.create(name: "update", role_id: 1)
+Permission.create(name: "delete", role_id: 1)
+Permission.create(name: "read", role_id: 2)
 
-PermissionUser.create(user_id: 1, permission_id: 1)
-PermissionUser.create(user_id: 1, permission_id: 2)
-PermissionUser.create(user_id: 2, permission_id: 3)
-PermissionUser.create(user_id: 3, permission_id: 3)
+user = User.find(3)
+p1 = Permission.find(3)
+user.permissions << p1
 
 
-
+user = User.find(3)
+p1 = Permission.find(5)
+user.permissions << p1
