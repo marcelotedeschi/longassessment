@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
 
   #has_many :permission_users
   #has_many :permissions, :through => :permission_users
+
+  validates_presence_of :name, message: "Name is mandatory!"
+
+
 end

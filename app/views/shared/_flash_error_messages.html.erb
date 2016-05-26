@@ -1,0 +1,14 @@
+<%# Error messages partial %>
+<% if !msgError.blank? %>
+    <label class="error-text">
+      <% msgError.each do |m| %>
+          <% if m == msgError[-1] %>
+              <%= m %>
+          <% elsif m == msgError[-2] %>
+              <%= m %> e
+          <% else %>
+              <%= m %>,
+          <% end %>
+      <% end %></label>
+<% end %>
+

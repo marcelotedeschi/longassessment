@@ -20,6 +20,7 @@ Permission.create(name: "update", role_id: 1)
 Permission.create(name: "delete", role_id: 1)
 Permission.create(name: "read", role_id: 2)
 
+
 user = User.find(3)
 p1 = Permission.find(3)
 user.permissions << p1

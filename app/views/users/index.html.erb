@@ -11,6 +11,7 @@
 <%= form_for(@newUser) do |f| %>
 
     <%#= FORM name %>
+    <%= render partial: "shared/flash_error_messages", locals: { msgError: @newUser.errors[:name]} %>
     <%= f.text_field :name, placeholder: 'Write the name'%><br>
 
     <%# FORM status %>
@@ -19,14 +20,9 @@
 
 
     <%#= FORM Role_id %>
-
-    <%#= f.text_field :role_id, placeholder: 'Write the role_id'%><br>
-    <%#= f.select(:role_id, options_from_collection_for_select(@role.all, :id, :name))%>
     <%= f.collection_select(:role_id, @role, :id, :name) %>
 
 
     <%= f.submit "Create new User" %>
 <% end %>
 <br>
-
-<%= @test %>

@@ -1,14 +1,5 @@
 class UsersController < ApplicationController
 
-  def userpermissions(user)
-    @permissions = user.permissions
-    @result = []
-    @permissions.each do |p|
-      @result << p.name
-    end
-    return @result
-  end
-
   def show
     @user = User.find(params[:id])
     @permissions = @user.permissions
@@ -19,22 +10,22 @@ class UsersController < ApplicationController
     @allPermissions.each do |p|
       @result << p.name
     end
-
   end
 
   def index
     @role = Role.all
     @user = User.all
     @newUser = User.new
-
   end
 
   def create
-    @user = User.new(user_params.merge(status: "Logged"))
-    if @user.save
+    @newUser = User.new(user_params.merge(status: "Logged"))
+    if @newUser.save
       redirect_to users_path
-    elsif @games.errors.any?
-      render 'new'
+    elsif @newUser.errors.any?
+      @role = Role.all
+      @user = User.all
+      render 'index'
     end
   end
 
@@ -42,6 +33,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :role_id)
     end
-
 end
 
