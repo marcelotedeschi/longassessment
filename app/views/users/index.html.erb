@@ -1,28 +1,47 @@
 <h1>Users List</h1>
-<% @user.each do |u| %>
-<%= u.name %>, <%= u.status %>, <%= u.role_id %>
-    <%= link_to "Show Permissions", user_path(u.id)%>
-    <br>
-<% end %>
+<br>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Role</th>
+    <th>Permissions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @user.each do |u| %>
+  <tr>
+    <th><%= u.name %></th>
+    <th><%= u.status %></th>
+    <th><%= u.role.name %></th>
+    <th><%= link_to "Show", user_path(u.id)%></th>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<br><br>
+<br>
 <h1> Register new user </h1>
 <br>
-<%= form_for(@newUser) do |f| %>
+<div class="inner cover row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <%= form_for(@newUser) do |f| %>
 
-    <%#= FORM name %>
-    <%= render partial: "shared/flash_error_messages", locals: { msgError: @newUser.errors[:name]} %>
-    <%= f.text_field :name, placeholder: 'Write the name'%><br>
+        <%#= FORM name %>
+        <%= render partial: 'shared/flash_error_messages', locals: { msgError: @newUser.errors[:name]} %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Write the name'%><br>
 
-    <%# FORM status %>
-
-    <%= f.text_field :status, placeholder: 'Status unavailable', disabled: "disabled"%><br>
-
-
-    <%#= FORM Role_id %>
-    <%= f.collection_select(:role_id, @role, :id, :name) %>
+        <%# FORM status %>
+        <%= f.text_field :status, class: 'form-control', placeholder: 'Status unavailable', disabled: "disabled"%><br>
 
 
-    <%= f.submit "Create new User" %>
-<% end %>
+        <%#= FORM Role_id %>
+        <%= f.collection_select :role_id, @role, :id, :name, {prompt: "Select a category"}, {class: "form-control"} %>
+<br><br>
+
+        <%= f.submit 'Create new User', class: 'btn btn-default' %>
+    <% end %>
+    </div>
+</div>
 <br>

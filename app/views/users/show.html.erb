@@ -1,7 +1,17 @@
 <h1>Permissions</h1>
-<% @result.each do |r| %>
-    <p><%= r %></p>
-<% end %>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Permissions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @result.each do |r| %>
+      <tr>
+        <th><%= r %></th>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<br>
-<%= link_to "back", users_path %>
+<%= link_to "back", users_path, class: 'btn btn-default' %>

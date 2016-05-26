@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Longassessment</title>
+  <title>Long Assessment</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <%= yield %>
+      <div class="mastfoot">
+        <div class="inner">
+          <p>Created by <a href="https://marcelotedeschi.com" target="_blank">Marcelo T</a>, using <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
